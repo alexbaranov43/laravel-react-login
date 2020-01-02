@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "../Header/Header";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 class Home extends Component {
     constructor() {
         super();
@@ -21,14 +21,27 @@ class Home extends Component {
     }
     render() {
         return (
-            <div>
-                <Header
-                    userData={this.state.user}
-                    userIsLoggedIn={this.state.isLoggedIn}
-                />
+            <div className="offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 ">
                 <span>
                     Home
+                    <br />
+                    <Link to="/login" className="text-yellow">
+                        <button className="btn btn-info button-width">
+                            Login
+                                </button>
+                    </Link>
                 </span>
+                <div>
+                    <p className="text-yellow">
+                        Don't have an account?{" "} <br />
+                        <Link to="/register" className="text-yellow">
+                            {" "}
+                            <button className="btn btn-primary m-r-md">
+                                Register
+                                </button>
+                        </Link>
+                    </p>
+                </div>
             </div>
         );
     }

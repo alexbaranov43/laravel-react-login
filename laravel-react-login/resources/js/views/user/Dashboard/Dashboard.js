@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Header from "../../../components/Header/Header";
 class Dashboard extends Component {
     constructor() {
         super();
@@ -87,10 +86,6 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                {/* <Header
-                    userData={this.state.user}
-                    userIsLoggedIn={this.state.isLoggedIn}
-                /> */}
                 <span>User Info</span>
                 <br />
                 <table className="table table-striped">
