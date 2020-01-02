@@ -5,7 +5,8 @@ class Dashboard extends Component {
         super();
         this.state = {
             isLoggedIn: false,
-            user: {}
+            user: {},
+            formSubmitting: false
         };
     }
     // check if user is authenticated and storing authentication data as states if true
@@ -20,63 +21,67 @@ class Dashboard extends Component {
         }
     }
     handleSubmit(e) {
-        e.preventDefault();
-        this.setState({ formSubmitting: true });
-        let userData = this.state.user;
-        axios
-            .post("/api/auth/logout", userData)
-            .then(response => {
-                return response;
-            })
-            .then(json => {
-                if (json.data.success) {
-                    let userData = {
-                        id: null,
-                        first_name: null,
-                        last_name: null,
-                        username: null,
-                        email: null,
-                        access_token: null
-                    };
-                    let appState = {
-                        isLoggedIn: true,
-                        user: userData
-                    };
-                    localStorage["appState"] = JSON.stringify(appState);
-                    this.setState({
-                        isLoggedIn: false,
-                        user: null,
-                        error: ""
-                    });
-                    location.reload();
-                } 
-            })
-            .catch(error => {
-                if (error.response) {
-                    // The request was made and the server responded with a status code that falls out of the range of 2xx
-                    let err = error.response.data;
-                    this.setState({
-                        error: err.message,
-                        errorMessage: err.errors,
-                        formSubmitting: false
-                    });
-                } else if (error.request) {
-                    // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
-                    let err = error.request;
-                    this.setState({
-                        error: err,
-                        formSubmitting: false
-                    });
-                } else {
-                    // Something happened in setting up the request that triggered an Error
-                    let err = error.message;
-                    this.setState({
-                        error: err,
-                        formSubmitting: false
-                    });
-                }
-            })
-            .finally(this.setState({ error: "" }));
+        // e.preventDefault();
+        localStorage.clear();
+        // this.setState({ formSubmitting: true });
+        // let userData = this.state.user;
+        // axios
+        //     .post("/api/auth/logout", userData)
+        //     .then(response => {
+        //         localStorage.clear()
+        //         return response;
+        //     })
+        //     .then(json => {
+        //         if (json.data.success) {
+        //             let userData = {
+        //                 id: null,
+        //                 first_name: null,
+        //                 last_name: null,
+        //                 username: null,
+        //                 email: null,
+        //                 access_token: null
+        //             };
+        //             let appState = {
+        //                 isLoggedIn: true,
+        //                 user: userData
+        //             };
+        //             localStorage["appState"] = JSON.stringify(appState);
+        //             this.setState({
+        //                 isLoggedIn: false,
+        //                 user: null,
+        //                 error: ""
+        //             });
+        //             location.reload();
+        //         } 
+        //     })
+        //     .catch(error => {
+        //         if (error.response) {
+        //             // The request was made and the server responded with a status code that falls out of the range of 2xx
+        //             let err = error.response.data;
+        //             this.setState({
+        //                 error: err.message,
+        //                 errorMessage: err.errors,
+        //                 formSubmitting: false
+        //             });
+        //         } else if (error.request) {
+        //             // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
+        //             let err = error.request;
+        //             this.setState({
+        //                 error: err,
+        //                 formSubmitting: false
+        //             });
+        //         } else {
+        //             // Something happened in setting up the request that triggered an Error
+        //             let err = error.message;
+        //             this.setState({
+        //                 error: err,
+        //                 formSubmitting: false
+        //             });
+        //         }
+        //     })
+        //     .finally(
+        //         this.setState({ error: "" })
+        //     );
     }
     // 4.1
     render() {
@@ -87,7 +92,10 @@ class Dashboard extends Component {
                     userIsLoggedIn={this.state.isLoggedIn}
                 /> */}
                 <form onSubmit={this.handleSubmit}>
-                    <button type="submit">Logout</button>
+                    <button type="submit"
+                        name="singlebutton"
+                        className="btn btn-default btn-lg  btn-block mb10"
+                        >Logout</button>
                 </form>
                 <span>User Info</span>
                 <br />

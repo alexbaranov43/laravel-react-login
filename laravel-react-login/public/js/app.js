@@ -73029,8 +73029,8 @@ var PrivateRoute = function PrivateRoute(_ref) {
         to: {
           pathname: "/login",
           state: {
-            prevLocation: path,
-            error: "You need to login first!"
+            prevLocation: path // error: "You need to login first!"
+
           }
         }
       });
@@ -73317,9 +73317,7 @@ function (_Component) {
       };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/"
-      }, "Index")), this.state.isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "has-sub"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/dashboard"
@@ -73918,12 +73916,11 @@ function (_Component) {
     _this.handlePasswordConfirm = _this.handlePasswordConfirm.bind(_assertThisInitialized(_this));
     return _this;
   } // 2.2
-  // componentWillMount, componentDidMount etc etc that have //componentStuffStuff are known as React Lifecycles which of course //you already know
 
 
   _createClass(RegisterContainer, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var state = localStorage["appState"];
 
       if (state) {
@@ -73937,11 +73934,7 @@ function (_Component) {
       if (this.state.isRegistered) {
         return this.props.history.push("/dashboard");
       }
-    } // 2.3
 
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
       var _ref = this.state.redirect.state || {
         prevLocation: {
           pathname: "/dashboard"
@@ -73968,7 +73961,7 @@ function (_Component) {
       axios.post("/api/auth/signup", userData).then(function (response) {
         return response;
       }).then(function (json) {
-        if (json.data.success) {
+        if (json.data.status === 201) {
           var _userData = {
             id: json.data.id,
             first_name: json.data.first_name,
@@ -73987,9 +73980,9 @@ function (_Component) {
             isRegistered: appState.isRegistered,
             user: appState.user
           });
-        } else {
-          alert("Our System Failed To Register Your Account!");
         }
+
+        _this2.props.history.push('/login');
       })["catch"](function (error) {
         if (error.response) {
           // The request was made and the server responded with a status code that falls out of the range of 2xx
@@ -74109,7 +74102,7 @@ function (_Component) {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create Your Account"), "// 2.7", this.state.isRegistered ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flash_message__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Create Your Account"), this.state.isRegistered ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_flash_message__WEBPACK_IMPORTED_MODULE_3___default.a, {
         duration: 60000,
         persistOnHover: true
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
@@ -74259,7 +74252,8 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this));
     _this.state = {
       isLoggedIn: false,
-      user: {}
+      user: {},
+      formSubmitting: false
     };
     return _this;
   } // check if user is authenticated and storing authentication data as states if true
@@ -74281,69 +74275,66 @@ function (_Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this2 = this;
-
-      e.preventDefault();
-      this.setState({
-        formSubmitting: true
-      });
-      var userData = this.state.user;
-      axios.post("/api/auth/logout", userData).then(function (response) {
-        return response;
-      }).then(function (json) {
-        if (json.data.success) {
-          var _userData = {
-            id: null,
-            first_name: null,
-            last_name: null,
-            username: null,
-            email: null,
-            access_token: null
-          };
-          var appState = {
-            isLoggedIn: true,
-            user: _userData
-          };
-          localStorage["appState"] = JSON.stringify(appState);
-
-          _this2.setState({
-            isLoggedIn: false,
-            user: null,
-            error: ""
-          });
-
-          location.reload();
-        }
-      })["catch"](function (error) {
-        if (error.response) {
-          // The request was made and the server responded with a status code that falls out of the range of 2xx
-          var err = error.response.data;
-
-          _this2.setState({
-            error: err.message,
-            errorMessage: err.errors,
-            formSubmitting: false
-          });
-        } else if (error.request) {
-          // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
-          var _err = error.request;
-
-          _this2.setState({
-            error: _err,
-            formSubmitting: false
-          });
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          var _err2 = error.message;
-
-          _this2.setState({
-            error: _err2,
-            formSubmitting: false
-          });
-        }
-      })["finally"](this.setState({
-        error: ""
-      }));
+      // e.preventDefault();
+      localStorage.clear(); // this.setState({ formSubmitting: true });
+      // let userData = this.state.user;
+      // axios
+      //     .post("/api/auth/logout", userData)
+      //     .then(response => {
+      //         localStorage.clear()
+      //         return response;
+      //     })
+      //     .then(json => {
+      //         if (json.data.success) {
+      //             let userData = {
+      //                 id: null,
+      //                 first_name: null,
+      //                 last_name: null,
+      //                 username: null,
+      //                 email: null,
+      //                 access_token: null
+      //             };
+      //             let appState = {
+      //                 isLoggedIn: true,
+      //                 user: userData
+      //             };
+      //             localStorage["appState"] = JSON.stringify(appState);
+      //             this.setState({
+      //                 isLoggedIn: false,
+      //                 user: null,
+      //                 error: ""
+      //             });
+      //             location.reload();
+      //         } 
+      //     })
+      //     .catch(error => {
+      //         if (error.response) {
+      //             // The request was made and the server responded with a status code that falls out of the range of 2xx
+      //             let err = error.response.data;
+      //             this.setState({
+      //                 error: err.message,
+      //                 errorMessage: err.errors,
+      //                 formSubmitting: false
+      //             });
+      //         } else if (error.request) {
+      //             // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
+      //             let err = error.request;
+      //             this.setState({
+      //                 error: err,
+      //                 formSubmitting: false
+      //             });
+      //         } else {
+      //             // Something happened in setting up the request that triggered an Error
+      //             let err = error.message;
+      //             this.setState({
+      //                 error: err,
+      //                 formSubmitting: false
+      //             });
+      //         }
+      //     })
+      //     .finally(
+      //         this.setState({ error: "" })
+      //     );
     } // 4.1
 
   }, {
@@ -74352,7 +74343,9 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit"
+        type: "submit",
+        name: "singlebutton",
+        className: "btn btn-default btn-lg  btn-block mb10"
       }, "Logout")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "User Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table table-striped"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {

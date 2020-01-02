@@ -30,8 +30,7 @@ class RegisterContainer extends Component {
         this.handlePasswordConfirm = this.handlePasswordConfirm.bind(this);
     }
     // 2.2
-    // componentWillMount, componentDidMount etc etc that have //componentStuffStuff are known as React Lifecycles which of course //you already know
-    componentWillMount() {
+    componentDidMount() {
         let state = localStorage["appState"];
         if (state) {
             let AppState = JSON.parse(state);
@@ -40,9 +39,6 @@ class RegisterContainer extends Component {
         if (this.state.isRegistered) {
             return this.props.history.push("/dashboard");
         }
-    }
-    // 2.3
-    componentDidMount() {
         const { prevLocation } = this.state.redirect.state || {
             prevLocation: { pathname: "/dashboard" }
         };
@@ -62,7 +58,7 @@ class RegisterContainer extends Component {
                 return response;
             })
             .then(json => {
-                if (json.data.success) {
+                if (json.data.status === 201) {
                     let userData = {
                         id: json.data.id,
                         first_name: json.data.first_name,
@@ -80,9 +76,8 @@ class RegisterContainer extends Component {
                         isRegistered: appState.isRegistered,
                         user: appState.user
                     });
-                } else {
-                    alert(`Our System Failed To Register Your Account!`);
                 }
+                this.props.history.push('/login')
             })
             .catch(error => {
                 if (error.response) {
@@ -176,7 +171,6 @@ class RegisterContainer extends Component {
                 <div className="row">
                     <div className="offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 ">
                         <h2>Create Your Account</h2>
-                        // 2.7
                         {this.state.isRegistered ? (
                             <FlashMessage
                                 duration={60000}
