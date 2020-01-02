@@ -32,7 +32,11 @@ class Header extends Component {
         <ul>
           <li><Link to="/">Index</Link></li>
           {this.state.isLoggedIn ? 
-           <li className="has-sub"><Link to="/dashboard">Dashboard</Link></li> : ""}
+            <li className="has-sub"><Link to="/dashboard">Dashboard</Link></li> : ""}
+          {this.state.isLoggedIn ? 
+            <li className="has-sub">Logout</li> : ""
+
+          }
           {!this.state.isLoggedIn ?
             <li><Link to="/login">Login</Link> | <Link to="/register">Register</Link></li> : ""}
         </ul>

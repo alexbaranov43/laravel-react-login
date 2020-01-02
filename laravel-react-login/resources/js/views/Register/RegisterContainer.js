@@ -65,7 +65,9 @@ class RegisterContainer extends Component {
                 if (json.data.success) {
                     let userData = {
                         id: json.data.id,
-                        name: json.data.name,
+                        first_name: json.data.first_name,
+                        last_name: json.data.last_name,
+                        username: json.data.username,
                         email: json.data.email,
                         activation_token: json.data.activation_token
                     };
