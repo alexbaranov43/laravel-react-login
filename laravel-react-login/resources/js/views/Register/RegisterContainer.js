@@ -271,7 +271,7 @@ class RegisterContainer extends Component {
                             <button
                                 type="submit"
                                 name="singlebutton"
-                                className="btn btn-default btn-lg  btn-block mb10"
+                                className="btn btn-info btn-lg  btn-block mb10"
                                 disabled={
                                     this.state.formSubmitting ? "disabled" : ""
                                 }
@@ -279,18 +279,25 @@ class RegisterContainer extends Component {
                                 Create Account
                             </button>
                         </form>
-                        <p className="text-white">
-                            Already have an account?
-                            <Link to="/login" className="text-yellow">
-                                {" "}
-                                Log In
-                            </Link>
-                            <span className="pull-right">
-                                <Link to="/" className="text-white">
-                                    Back to Home
+                        <br />
+                        <div>
+                            <p className="text-yellow">
+                                Already have an account?
+                            </p>
+                                <Link to="/login" className="text-yellow">
+                                    <button className="btn btn-success button-width m-r-md">
+                                    {" "}
+                                        Log In
+                                    </button>
                                 </Link>
-                            </span>
-                        </p>
+                                <span className="pull-right">
+                                    <Link to="/" className="text-yellow">
+                                        <button className="btn btn-info button-width">
+                                            Home
+                                        </button>
+                                    </Link>
+                                </span>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -73734,18 +73734,24 @@ function (_Component) {
         disabled: this.state.formSubmitting,
         type: "submit",
         name: "singlebutton",
-        className: "btn btn-default btn-lg  btn-block mb10"
-      }, " ", this.state.formSubmitting ? "Logging You In..." : "Log In", " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-white"
-      }, "Don't have an account?", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "btn btn-light btn-lg  btn-block mb10"
+      }, " ", this.state.formSubmitting ? "Logging You In..." : "Log In", " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-yellow"
+      }, "Don't have an account?", " ", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/register",
         className: "text-yellow"
-      }, " ", "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "pull-right"
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary m-r-md"
+      }, "Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
-        className: "text-white"
-      }, "Back to Index")))));
+        className: "text-yellow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-info button-width"
+      }, "Back")))))));
     }
   }]);
 
@@ -74182,19 +74188,23 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         name: "singlebutton",
-        className: "btn btn-default btn-lg  btn-block mb10",
+        className: "btn btn-info btn-lg  btn-block mb10",
         disabled: this.state.formSubmitting ? "disabled" : ""
-      }, "Create Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-white"
-      }, "Already have an account?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Create Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "text-yellow"
+      }, "Already have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login",
         className: "text-yellow"
-      }, " ", "Log In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-success button-width m-r-md"
+      }, " ", "Log In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "pull-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
-        className: "text-white"
-      }, "Back to Home"))))));
+        className: "text-yellow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-info button-width"
+      }, "Home")))))));
     }
   }]);
 
@@ -74340,13 +74350,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        name: "singlebutton",
-        className: "btn btn-default btn-lg  btn-block mb10"
-      }, "Logout")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "User Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "User Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table table-striped"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row ",
@@ -74357,7 +74361,13 @@ function (_Component) {
         scope: "row "
       }, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.user.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row "
-      }, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.user.email)))));
+      }, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.user.email)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        name: "singlebutton",
+        className: "btn btn-danger"
+      }, "Logout"))));
     }
   }]);
 

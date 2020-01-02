@@ -185,7 +185,7 @@ class LoginContainer extends Component {
                                 disabled={this.state.formSubmitting}
                                 type="submit"
                                 name="singlebutton"
-                                className="btn btn-default btn-lg  btn-block mb10"
+                                className="btn btn-light btn-lg  btn-block mb10"
                             >
                                 {" "}
                                 {this.state.formSubmitting
@@ -194,18 +194,24 @@ class LoginContainer extends Component {
                             </button>
                         </form>
                     </div>
-                    <p className="text-white">
-                        Don't have an account?{" "}
-                        <Link to="/register" className="text-yellow">
-                            {" "}
-                            Register
-                        </Link>
-                        <span className="pull-right">
-                            <Link to="/" className="text-white">
-                                Back to Index
+                    <div className="offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 ">
+                        <p className="text-yellow">
+                            Don't have an account?{" "} <br/>
+                            <Link to="/register" className="text-yellow">
+                                {" "}
+                                <button className="btn btn-primary m-r-md">
+                                    Register
+                                </button>
                             </Link>
-                        </span>
-                    </p>
+                            <span className="">
+                                <Link to="/" className="text-yellow">
+                                    <button className="btn btn-info button-width">
+                                        Back
+                                    </button>
+                                </Link>
+                            </span>
+                            </p>
+                    </div>
                 </div>
             </div>
         );

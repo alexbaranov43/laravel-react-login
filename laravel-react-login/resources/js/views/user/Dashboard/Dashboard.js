@@ -91,12 +91,6 @@ class Dashboard extends Component {
                     userData={this.state.user}
                     userIsLoggedIn={this.state.isLoggedIn}
                 /> */}
-                <form onSubmit={this.handleSubmit}>
-                    <button type="submit"
-                        name="singlebutton"
-                        className="btn btn-default btn-lg  btn-block mb10"
-                        >Logout</button>
-                </form>
                 <span>User Info</span>
                 <br />
                 <table className="table table-striped">
@@ -121,6 +115,15 @@ class Dashboard extends Component {
                         </tr>
                     </tbody>
                 </table>
+                <br />
+                <div>
+                <form onSubmit={this.handleSubmit}>
+                    <button type="submit"
+                        name="singlebutton"
+                        className="btn btn-danger"
+                    >Logout</button>
+                    </form>
+                    </div>
             </div>
         );
     }
