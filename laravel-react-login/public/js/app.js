@@ -74208,16 +74208,14 @@ function (_Component) {
       localStorage["appState"] = JSON.stringify(appState);
       this.setState(appState);
       this.props.history.push('/login');
-    } // 4.1
-
+    }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello Future Employers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello Future Employer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table table-striped"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "row ",
-        onClick: console.log(this.state)
+        scope: "row "
       }, "First Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.user.first_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row "
       }, "Last Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.user.last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {

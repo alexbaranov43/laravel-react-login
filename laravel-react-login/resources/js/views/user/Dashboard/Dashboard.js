@@ -30,16 +30,16 @@ class Dashboard extends Component {
         this.setState(appState);
         this.props.history.push('/login');
     }    
-    // 4.1
+
     render() {
         return (
             <div>
-                <h1>Hello Future Employers</h1>
+                <h1>Hello Future Employer</h1>
                 <br />
                 <table className="table table-striped">
                     <tbody>
                         <tr>
-                            <th scope="row " onClick={console.log(this.state)}>
+                            <th scope="row ">
                                 First Name
                             </th>
                             <td>{this.state.user.first_name}</td>
