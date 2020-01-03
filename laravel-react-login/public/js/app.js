@@ -73313,18 +73313,18 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 "
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Home", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login",
-        className: "text-yellow"
+        className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-info button-width"
       }, "Login"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-yellow"
+        className: ""
       }, "Don't have an account?", " ", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/register",
-        className: "text-yellow"
+        className: ""
       }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-primary m-r-md"
+        className: "btn btn-primary"
       }, "Register")))));
     }
   }]);
@@ -73650,24 +73650,24 @@ function (_Component) {
         disabled: this.state.formSubmitting,
         type: "submit",
         name: "singlebutton",
-        className: "btn btn-light btn-lg  btn-block mb10"
+        className: "btn btn-info btn-lg  btn-block mb10"
       }, " ", this.state.formSubmitting ? "Logging You In..." : "Log In", " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-yellow"
+        className: ""
       }, "Don't have an account?", " ", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/register",
-        className: "text-yellow"
+        className: ""
       }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary m-r-md"
       }, "Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
-        className: "text-yellow"
+        className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-info button-width"
-      }, "Back")))))));
+        className: "btn btn-success button-width"
+      }, "Home")))))));
     }
   }]);
 
@@ -74107,20 +74107,20 @@ function (_Component) {
         className: "btn btn-info btn-lg  btn-block mb10",
         disabled: this.state.formSubmitting ? "disabled" : ""
       }, "Create Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "text-yellow"
+        className: ""
       }, "Already have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login",
-        className: "text-yellow"
+        className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-success button-width m-r-md"
       }, " ", "Log In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "pull-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
-        className: "text-yellow"
+        className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn btn-info button-width"
-      }, "Home")))))));
+        className: "btn btn-danger button-width"
+      }, "Back")))))));
     }
   }]);
 
@@ -74153,9 +74153,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -74179,6 +74179,7 @@ function (_Component) {
       user: {},
       formSubmitting: false
     };
+    _this.logOut = _this.logOut.bind(_assertThisInitialized(_this));
     return _this;
   } // check if user is authenticated and storing authentication data as states if true
 
@@ -74195,76 +74196,24 @@ function (_Component) {
           user: AppState.user
         });
       }
-    }
+    } // clear local storage on logout
+
   }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      // e.preventDefault();
-      localStorage.clear(); // this.setState({ formSubmitting: true });
-      // let userData = this.state.user;
-      // axios
-      //     .post("/api/auth/logout", userData)
-      //     .then(response => {
-      //         localStorage.clear()
-      //         return response;
-      //     })
-      //     .then(json => {
-      //         if (json.data.success) {
-      //             let userData = {
-      //                 id: null,
-      //                 first_name: null,
-      //                 last_name: null,
-      //                 username: null,
-      //                 email: null,
-      //                 access_token: null
-      //             };
-      //             let appState = {
-      //                 isLoggedIn: true,
-      //                 user: userData
-      //             };
-      //             localStorage["appState"] = JSON.stringify(appState);
-      //             this.setState({
-      //                 isLoggedIn: false,
-      //                 user: null,
-      //                 error: ""
-      //             });
-      //             location.reload();
-      //         } 
-      //     })
-      //     .catch(error => {
-      //         if (error.response) {
-      //             // The request was made and the server responded with a status code that falls out of the range of 2xx
-      //             let err = error.response.data;
-      //             this.setState({
-      //                 error: err.message,
-      //                 errorMessage: err.errors,
-      //                 formSubmitting: false
-      //             });
-      //         } else if (error.request) {
-      //             // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
-      //             let err = error.request;
-      //             this.setState({
-      //                 error: err,
-      //                 formSubmitting: false
-      //             });
-      //         } else {
-      //             // Something happened in setting up the request that triggered an Error
-      //             let err = error.message;
-      //             this.setState({
-      //                 error: err,
-      //                 formSubmitting: false
-      //             });
-      //         }
-      //     })
-      //     .finally(
-      //         this.setState({ error: "" })
-      //     );
+    key: "logOut",
+    value: function logOut() {
+      var appState = {
+        isLoggedIn: false,
+        user: {}
+      };
+      localStorage["appState"] = JSON.stringify(appState);
+      this.setState(appState);
+      this.props.history.push('/login');
     } // 4.1
 
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "User Info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello Future Employers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table table-striped"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row ",
@@ -74276,7 +74225,7 @@ function (_Component) {
       }, "Username"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.user.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "row "
       }, "Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, this.state.user.email)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
+        onSubmit: this.logOut
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         name: "singlebutton",

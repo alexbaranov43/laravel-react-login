@@ -23,20 +23,20 @@ class Home extends Component {
         return (
             <div className="offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 ">
                 <span>
-                    Home
+                    <h2>Home</h2>
                     <br />
-                    <Link to="/login" className="text-yellow">
+                    <Link to="/login" className="">
                         <button className="btn btn-info button-width">
                             Login
                                 </button>
                     </Link>
                 </span>
                 <div>
-                    <p className="text-yellow">
+                    <p className="">
                         Don't have an account?{" "} <br />
-                        <Link to="/register" className="text-yellow">
+                        <Link to="/register" className="">
                             {" "}
-                            <button className="btn btn-primary m-r-md">
+                            <button className="btn btn-primary">
                                 Register
                                 </button>
                         </Link>

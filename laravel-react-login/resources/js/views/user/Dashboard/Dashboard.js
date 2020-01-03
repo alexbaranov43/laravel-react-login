@@ -7,6 +7,7 @@ class Dashboard extends Component {
             user: {},
             formSubmitting: false
         };
+        this.logOut = this.logOut.bind(this);
     }
     // check if user is authenticated and storing authentication data as states if true
     componentDidMount() {
@@ -19,74 +20,21 @@ class Dashboard extends Component {
             });
         }
     }
-    handleSubmit(e) {
-        // e.preventDefault();
-        localStorage.clear();
-        // this.setState({ formSubmitting: true });
-        // let userData = this.state.user;
-        // axios
-        //     .post("/api/auth/logout", userData)
-        //     .then(response => {
-        //         localStorage.clear()
-        //         return response;
-        //     })
-        //     .then(json => {
-        //         if (json.data.success) {
-        //             let userData = {
-        //                 id: null,
-        //                 first_name: null,
-        //                 last_name: null,
-        //                 username: null,
-        //                 email: null,
-        //                 access_token: null
-        //             };
-        //             let appState = {
-        //                 isLoggedIn: true,
-        //                 user: userData
-        //             };
-        //             localStorage["appState"] = JSON.stringify(appState);
-        //             this.setState({
-        //                 isLoggedIn: false,
-        //                 user: null,
-        //                 error: ""
-        //             });
-        //             location.reload();
-        //         } 
-        //     })
-        //     .catch(error => {
-        //         if (error.response) {
-        //             // The request was made and the server responded with a status code that falls out of the range of 2xx
-        //             let err = error.response.data;
-        //             this.setState({
-        //                 error: err.message,
-        //                 errorMessage: err.errors,
-        //                 formSubmitting: false
-        //             });
-        //         } else if (error.request) {
-        //             // The request was made but no response was received `error.request` is an instance of XMLHttpRequest in the browser and an instance of http.ClientRequest in node.js
-        //             let err = error.request;
-        //             this.setState({
-        //                 error: err,
-        //                 formSubmitting: false
-        //             });
-        //         } else {
-        //             // Something happened in setting up the request that triggered an Error
-        //             let err = error.message;
-        //             this.setState({
-        //                 error: err,
-        //                 formSubmitting: false
-        //             });
-        //         }
-        //     })
-        //     .finally(
-        //         this.setState({ error: "" })
-        //     );
-    }
+    // clear local storage on logout
+    logOut() {
+        let appState = {
+            isLoggedIn: false,
+            user: {}
+        };
+        localStorage["appState"] = JSON.stringify(appState);
+        this.setState(appState);
+        this.props.history.push('/login');
+    }    
     // 4.1
     render() {
         return (
             <div>
-                <span>User Info</span>
+                <h1>Hello Future Employers</h1>
                 <br />
                 <table className="table table-striped">
                     <tbody>
@@ -112,7 +60,7 @@ class Dashboard extends Component {
                 </table>
                 <br />
                 <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.logOut}>
                     <button type="submit"
                         name="singlebutton"
                         className="btn btn-danger"

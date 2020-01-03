@@ -76,7 +76,7 @@
         </style>
     </head>
     <body>
-        <div id="index">
+        <div class="content" id="index">
 
         </div>
         <script src="{{ asset('js/app.js')  }}"></script>

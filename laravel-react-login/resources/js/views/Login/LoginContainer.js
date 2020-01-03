@@ -185,7 +185,7 @@ class LoginContainer extends Component {
                                 disabled={this.state.formSubmitting}
                                 type="submit"
                                 name="singlebutton"
-                                className="btn btn-light btn-lg  btn-block mb10"
+                                className="btn btn-info btn-lg  btn-block mb10"
                             >
                                 {" "}
                                 {this.state.formSubmitting
@@ -195,18 +195,18 @@ class LoginContainer extends Component {
                         </form>
                     </div>
                     <div className="offset-xl-3 col-xl-6 offset-lg-1 col-lg-10 col-md-12 col-sm-12 col-12 ">
-                        <p className="text-yellow">
+                        <p className="">
                             Don't have an account?{" "} <br/>
-                            <Link to="/register" className="text-yellow">
+                            <Link to="/register" className="">
                                 {" "}
                                 <button className="btn btn-primary m-r-md">
                                     Register
                                 </button>
                             </Link>
                             <span className="">
-                                <Link to="/" className="text-yellow">
-                                    <button className="btn btn-info button-width">
-                                        Back
+                                <Link to="/" className="">
+                                    <button className="btn btn-success button-width">
+                                        Home
                                     </button>
                                 </Link>
                             </span>

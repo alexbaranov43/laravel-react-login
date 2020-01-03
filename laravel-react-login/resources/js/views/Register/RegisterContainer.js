@@ -281,19 +281,19 @@ class RegisterContainer extends Component {
                         </form>
                         <br />
                         <div>
-                            <p className="text-yellow">
+                            <p className="">
                                 Already have an account?
                             </p>
-                                <Link to="/login" className="text-yellow">
+                                <Link to="/login" className="">
                                     <button className="btn btn-success button-width m-r-md">
                                     {" "}
                                         Log In
                                     </button>
                                 </Link>
                                 <span className="pull-right">
-                                    <Link to="/" className="text-yellow">
-                                        <button className="btn btn-info button-width">
-                                            Home
+                                    <Link to="/" className="">
+                                        <button className="btn btn-danger button-width">
+                                            Back
                                         </button>
                                     </Link>
                                 </span>
