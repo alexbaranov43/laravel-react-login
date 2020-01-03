@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Str;
 
+$dbUrl = parse_url(env("CLEARDB_DATABASE_URL"));
 return [
 
     /*
@@ -14,7 +15,6 @@ return [
     | you may use many connections at once using the Database library.
     |
     */
-
     'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
@@ -44,24 +44,18 @@ return [
         ],
 
         'mysql' => [
-            'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-        ],
+    'driver' => 'mysql',
+    'host' => isset($dbUrl["host"]) ? $dbUrl["host"] : env("DB_HOST"),
+    'port' => isset($dbUrl["port"]) ? $dbUrl["port"] : env("DB_PORT"),
+    'database' => isset($dbUrl["path"]) ? ltrim($dbUrl["path"], '/') : env("DB_DATABASE"),
+    'username' => isset($dbUrl["user"]) ? $dbUrl["user"] : env("DB_USERNAME"),
+    'password' => isset($dbUrl["pass"]) ? $dbUrl["pass"] : env("DB_PASSWORD"),
+    'charset' => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
+    'prefix' => '',
+    'strict' => true,
+    'engine' => null,
+],
 
         'pgsql' => [
             'driver' => 'pgsql',
