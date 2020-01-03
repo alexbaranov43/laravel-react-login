@@ -72996,7 +72996,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
- // 3.1
+ // check if local strorage exists
 
 var state_of_state = localStorage["appState"];
 
@@ -73009,12 +73009,12 @@ if (!state_of_state) {
 }
 
 var state = localStorage["appState"];
-var AppState = JSON.parse(state); // 3.2
+var AppState = JSON.parse(state); // confirm user auth
 
 var Auth = {
   isLoggedIn: AppState.isLoggedIn,
   user: AppState
-}; // 3.3
+}; // redirects to login after route passed to private route
 
 var PrivateRoute = function PrivateRoute(_ref) {
   var Component = _ref.component,
@@ -73029,8 +73029,8 @@ var PrivateRoute = function PrivateRoute(_ref) {
         to: {
           pathname: "/login",
           state: {
-            prevLocation: path // error: "You need to login first!"
-
+            prevLocation: path,
+            error: "You need to login first!"
           }
         }
       });
@@ -73057,11 +73057,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Home_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Home/Home */ "./resources/js/components/Home/Home.js");
 /* harmony import */ var _views_Login_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Login/Login */ "./resources/js/views/Login/Login.js");
 /* harmony import */ var _views_Register_Register__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/Register/Register */ "./resources/js/views/Register/Register.js");
-/* harmony import */ var _views_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/NotFound/NotFound */ "./resources/js/views/NotFound/NotFound.js");
-/* harmony import */ var _views_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_views_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _PrivateRoute__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PrivateRoute */ "./resources/js/PrivateRoute.js");
-/* harmony import */ var _views_user_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/user/Dashboard/Dashboard */ "./resources/js/views/user/Dashboard/Dashboard.js");
-
+/* harmony import */ var _PrivateRoute__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PrivateRoute */ "./resources/js/PrivateRoute.js");
+/* harmony import */ var _views_user_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/user/Dashboard/Dashboard */ "./resources/js/views/user/Dashboard/Dashboard.js");
 
 
 
@@ -73082,11 +73079,9 @@ var Main = function Main(props) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/register",
     component: _views_Register_Register__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PrivateRoute__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PrivateRoute__WEBPACK_IMPORTED_MODULE_5__["default"], {
     path: "/dashboard",
-    component: _views_user_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    component: _views_NotFound_NotFound__WEBPACK_IMPORTED_MODULE_5___default.a
+    component: _views_user_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"]
   }));
 };
 
@@ -73678,17 +73673,6 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/views/NotFound/NotFound.js":
-/*!*************************************************!*\
-  !*** ./resources/js/views/NotFound/NotFound.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
 /***/ "./resources/js/views/Register/Register.js":
 /*!*************************************************!*\
   !*** ./resources/js/views/Register/Register.js ***!
@@ -73807,7 +73791,6 @@ var RegisterContainer =
 function (_Component) {
   _inherits(RegisterContainer, _Component);
 
-  // 2.1
   function RegisterContainer(props) {
     var _this;
 
@@ -73837,7 +73820,7 @@ function (_Component) {
     _this.handlePassword = _this.handlePassword.bind(_assertThisInitialized(_this));
     _this.handlePasswordConfirm = _this.handlePasswordConfirm.bind(_assertThisInitialized(_this));
     return _this;
-  } // 2.2
+  } // Redirect when registered
 
 
   _createClass(RegisterContainer, [{
@@ -73867,8 +73850,7 @@ function (_Component) {
       if (prevLocation && this.state.isLoggedIn) {
         return this.props.history.push(prevLocation);
       }
-    } // 2.4
-
+    }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
@@ -73971,8 +73953,7 @@ function (_Component) {
           })
         };
       });
-    } // 2.5
-
+    }
   }, {
     key: "handleEmail",
     value: function handleEmail(e) {
@@ -74012,7 +73993,6 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      // 2.6
       var errorMessage = this.state.errorMessage;
       var arr = [];
       Object.values(errorMessage).forEach(function (value) {
@@ -74125,8 +74105,7 @@ function (_Component) {
   }]);
 
   return RegisterContainer;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]); // 2.8
-
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(RegisterContainer));
 

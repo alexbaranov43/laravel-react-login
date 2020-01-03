@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, Route, withRouter } from "react-router-dom";
-// 3.1
+// check if local strorage exists
 let state_of_state = localStorage["appState"];
 if (!state_of_state) {
     let appState = {
@@ -11,12 +11,12 @@ if (!state_of_state) {
 }
 let state = localStorage["appState"];
 let AppState = JSON.parse(state);
-// 3.2
+// confirm user auth
 const Auth = {
     isLoggedIn: AppState.isLoggedIn,
     user: AppState
 };
-// 3.3
+// redirects to login after route passed to private route
 const PrivateRoute = ({ component: Component, path, ...rest }) => (
     <Route
         path={path}
@@ -30,7 +30,7 @@ const PrivateRoute = ({ component: Component, path, ...rest }) => (
                         pathname: "/login",
                         state: {
                             prevLocation: path,
-                            // error: "You need to login first!"
+                            error: "You need to login first!"
                         }
                     }}
                 />

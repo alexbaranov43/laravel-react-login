@@ -3,7 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 import ReactDOM from "react-dom";
 import FlashMessage from "react-flash-message";
 class RegisterContainer extends Component {
-    // 2.1
     constructor(props) {
         super(props);
         this.state = {
@@ -29,7 +28,7 @@ class RegisterContainer extends Component {
         this.handlePassword = this.handlePassword.bind(this);
         this.handlePasswordConfirm = this.handlePasswordConfirm.bind(this);
     }
-    // 2.2
+    // Redirect when registered
     componentDidMount() {
         let state = localStorage["appState"];
         if (state) {
@@ -46,7 +45,6 @@ class RegisterContainer extends Component {
             return this.props.history.push(prevLocation);
         }
     }
-    // 2.4
     handleSubmit(e) {
         e.preventDefault();
         this.setState({ formSubmitting: true });
@@ -133,7 +131,7 @@ class RegisterContainer extends Component {
             }
         }));
     }
-    // 2.5
+
     handleEmail(e) {
         let value = e.target.value;
         this.setState(prevState => ({
@@ -162,7 +160,6 @@ class RegisterContainer extends Component {
         }));
     }
     render() {
-        // 2.6
         let errorMessage = this.state.errorMessage;
         let arr = [];
         Object.values(errorMessage).forEach(value => arr.push(value));
@@ -304,5 +301,5 @@ class RegisterContainer extends Component {
         );
     }
 }
-// 2.8
+
 export default withRouter(RegisterContainer);
